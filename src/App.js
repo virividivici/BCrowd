@@ -6,12 +6,20 @@ import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Theme from './application/theme.js';
-
+import Paper from 'material-ui/Paper';
 import sections from '../data/sections.json';
 import states from '../data/states.json';
 import TreeNode from './components/TreeNode.js'
 
 injectTapEventPlugin();
+const style = {
+  height: 'auto',
+  width: 1024,
+  margin: 20,
+  padding: 30,
+  display: 'inline-block',
+};
+
 
 export default class App extends Component {
 
@@ -40,13 +48,13 @@ export default class App extends Component {
 	
         return (<Theme>
 	            	<MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-	            		<div>
+	            		<Paper style={style} zDepth={2} >
 			            	{holder.map((sec, index)=>{            		
 			            		
-			            		return <TreeNode key={index} node={sec} initialStates={states}/>
+			            		return <TreeNode key={index} node={sec} initialStates={states} />
 			            		
 			            	})}
-			            </div>
+			            </Paper>
 	            	</MuiThemeProvider>
 	            </Theme>
             )
